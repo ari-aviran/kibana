@@ -5,7 +5,8 @@
  * 2.0.
  */
 import { CoreStart } from '@kbn/core/public';
-import { AppLinkItems } from './types';
+import { CLOUD_SECURITY_POSTURE_PATH, SecurityPageName } from '../../../common/constants';
+import { AppLinkItems, LinkItem } from './types';
 import { links as detectionLinks } from '../../detections/links';
 import { links as timelinesLinks } from '../../timelines/links';
 import { getCasesLinkItems } from '../../cases/links';
@@ -16,6 +17,16 @@ import { StartPlugins } from '../../types';
 
 const casesLinks = getCasesLinkItems();
 
+const cloudSecurityPostureLinks: LinkItem = {
+  id: SecurityPageName.cloudSecurityPostureFindings,
+  title: 'Findings',
+  path: CLOUD_SECURITY_POSTURE_PATH,
+  globalSearchKeywords: ['Findings'],
+  skipUrlState: true,
+  hideTimeline: true,
+  globalNavEnabled: true,
+};
+
 export const links = Object.freeze([
   dashboardsLandingLinks,
   detectionLinks,
@@ -24,6 +35,7 @@ export const links = Object.freeze([
   threatHuntingLandingLinks,
   gettingStartedLinks,
   managementLinks,
+  cloudSecurityPostureLinks,
 ]);
 
 export const getFilteredLinks = async (
@@ -40,5 +52,6 @@ export const getFilteredLinks = async (
     threatHuntingLandingLinks,
     gettingStartedLinks,
     managementFilteredLinks,
+    cloudSecurityPostureLinks,
   ]);
 };

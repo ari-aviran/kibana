@@ -9,6 +9,7 @@ import type { CoreStart } from '@kbn/core/public';
 import type { HomePublicPluginSetup } from '@kbn/home-plugin/public';
 import type { DataPublicPluginStart } from '@kbn/data-plugin/public';
 import type { EmbeddableStart } from '@kbn/embeddable-plugin/public';
+import type { CspClientPluginStart } from '@kbn/cloud-security-posture-plugin/public';
 import type { LensPublicStart } from '@kbn/lens-plugin/public';
 import type { NewsfeedPublicPluginStart } from '@kbn/newsfeed-plugin/public';
 import type { Start as InspectorStart } from '@kbn/inspector-plugin/public';
@@ -47,6 +48,7 @@ import type { Overview } from './overview';
 import type { Rules } from './rules';
 import type { Timelines } from './timelines';
 import type { Management } from './management';
+import type { CloudSecurityPosture } from './cloud_security_posture';
 import { LandingPages } from './landing_pages';
 
 export interface SetupPlugins {
@@ -80,6 +82,7 @@ export interface StartPlugins {
   dataViewFieldEditor: IndexPatternFieldEditorStart;
   osquery?: OsqueryPluginStart;
   security: SecurityPluginSetup;
+  cloudSecurityPosture: CspClientPluginStart;
 }
 
 export type StartServices = CoreStart &
@@ -114,6 +117,7 @@ export interface SubPlugins {
   timelines: Timelines;
   management: Management;
   landingPages: LandingPages;
+  cloudSecurityPosture: CloudSecurityPosture;
 }
 
 // TODO: find a better way to defined these types
@@ -130,4 +134,5 @@ export interface StartedSubPlugins {
   timelines: ReturnType<Timelines['start']>;
   management: ReturnType<Management['start']>;
   landingPages: ReturnType<LandingPages['start']>;
+  cloudSecurityPosture: ReturnType<CloudSecurityPosture['start']>;
 }

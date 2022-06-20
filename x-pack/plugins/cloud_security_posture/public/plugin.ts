@@ -15,6 +15,8 @@ import type {
 } from './types';
 import { PLUGIN_NAME, PLUGIN_ID } from '../common';
 
+const getFindingsComponent = () => 'This is coming from the CSP plugin!!!';
+
 export class CspPlugin
   implements
     Plugin<
@@ -48,7 +50,9 @@ export class CspPlugin
     return {};
   }
   public start(core: CoreStart, plugins: CspClientPluginStartDeps): CspClientPluginStart {
-    return {};
+    return {
+      getFindingsComponent,
+    };
   }
 
   public stop() {}

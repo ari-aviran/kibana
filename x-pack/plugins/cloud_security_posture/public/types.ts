@@ -5,13 +5,15 @@
  * 2.0.
  */
 
+import type { ReactNode } from 'react';
 import { UnifiedSearchPublicPluginStart } from '@kbn/unified-search-plugin/public';
 import type { DataPublicPluginSetup, DataPublicPluginStart } from '@kbn/data-plugin/public';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CspClientPluginSetup {}
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface CspClientPluginStart {}
+export interface CspClientPluginStart {
+  getFindingsComponent: () => ReactNode;
+}
 
 export interface CspClientPluginSetupDeps {
   // required

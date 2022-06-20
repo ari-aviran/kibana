@@ -60,6 +60,7 @@ import {
   USERS_PATH,
   KUBERNETES_PATH,
   RULES_CREATE_PATH,
+  CLOUD_SECURITY_POSTURE_PATH,
 } from '../../../common/constants';
 import { ExperimentalFeatures } from '../../../common/experimental_features';
 import { subscribeAppLinks } from '../../common/links';
@@ -98,6 +99,15 @@ export const securitySolutionsDeepLinks: SecuritySolutionDeepLink[] = [
         defaultMessage: 'Getting started',
       }),
     ],
+  },
+  {
+    id: SecurityPageName.cloudSecurityPostureFindings,
+    title: 'Findings',
+    path: CLOUD_SECURITY_POSTURE_PATH,
+    navLinkStatus: AppNavLinkStatus.visible,
+    order: 9000,
+    features: [FEATURE.general],
+    keywords: ['Findings'],
   },
   {
     id: SecurityPageName.dashboardsLanding,

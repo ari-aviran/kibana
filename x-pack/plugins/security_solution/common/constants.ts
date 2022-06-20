@@ -121,8 +121,10 @@ export enum SecurityPageName {
   kubernetes = 'kubernetes',
   exploreLanding = 'explore',
   dashboardsLanding = 'dashboards',
+  cloudSecurityPostureFindings = 'findings',
 }
 
+export const CLOUD_SECURITY_POSTURE_PATH = '/cloud_security_posture' as const;
 export const EXPLORE_PATH = '/explore' as const;
 export const DASHBOARDS_PATH = '/dashboards' as const;
 export const MANAGE_PATH = '/manage' as const;
