@@ -10,14 +10,9 @@ import { NavLink } from 'react-router-dom';
 import { EuiEmptyPrompt, EuiErrorBoundary, EuiTitle } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { KibanaPageTemplate, type KibanaPageTemplateProps } from '@kbn/kibana-react-plugin/public';
-import { allNavigationItems } from '../common/navigation/constants';
 import type { CspNavigationItem } from '../common/navigation/types';
 import { CspLoadingState } from './csp_loading_state';
-import {
-  CLOUD_SECURITY_POSTURE,
-  DEFAULT_NO_DATA_TEXT,
-  PACKAGE_NOT_INSTALLED_TEXT,
-} from './translations';
+import { DEFAULT_NO_DATA_TEXT, PACKAGE_NOT_INSTALLED_TEXT } from './translations';
 import { useCisKubernetesIntegration } from '../common/api/use_cis_kubernetes_integration';
 import { useCISIntegrationLink } from '../common/navigation/use_navigate_to_cis_integration';
 
@@ -57,14 +52,14 @@ export const getSideNavItems = (
     }));
 
 const DEFAULT_PAGE_PROPS: KibanaPageTemplateProps = {
-  solutionNav: {
-    name: CLOUD_SECURITY_POSTURE,
-    items: getSideNavItems({
-      dashboard: allNavigationItems.dashboard,
-      findings: allNavigationItems.findings,
-      benchmark: allNavigationItems.benchmarks,
-    }),
-  },
+  // solutionNav: {
+  //   name: CLOUD_SECURITY_POSTURE,
+  //   items: getSideNavItems({
+  //     dashboard: allNavigationItems.dashboard,
+  //     findings: allNavigationItems.findings,
+  //     benchmark: allNavigationItems.benchmarks,
+  //   }),
+  // },
   restrictWidth: false,
 };
 

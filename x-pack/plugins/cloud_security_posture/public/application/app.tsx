@@ -18,7 +18,7 @@ import { UnknownRoute } from '../components/unknown_route';
 import type { CspClientPluginStartDeps } from '../types';
 import { pageToComponentMapping } from './constants';
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
 });
 

@@ -6,6 +6,7 @@
  */
 
 import type { CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
+import { Findings } from './pages';
 import type {
   CspClientPluginSetup,
   CspClientPluginStart,
@@ -13,8 +14,8 @@ import type {
   CspClientPluginStartDeps,
 } from './types';
 
-const getFindingsComponent = () =>
-  'This chunk of text is coming from the cloud security posture plugin!';
+const getFindingsComponent = () => Findings;
+// 'This chunk of text is coming from the cloud security posture plugin!';
 
 export class CspPlugin
   implements
