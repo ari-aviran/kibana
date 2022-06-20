@@ -15,7 +15,6 @@ import type {
 } from './types';
 
 const getFindingsComponent = () => Findings;
-// 'This chunk of text is coming from the cloud security posture plugin!';
 
 export class CspPlugin
   implements
