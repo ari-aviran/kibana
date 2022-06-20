@@ -5,17 +5,16 @@
  * 2.0.
  */
 
-import type { AppMountParameters, CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
-import { DEFAULT_APP_CATEGORIES } from '@kbn/core/public';
+import type { CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
 import type {
   CspClientPluginSetup,
   CspClientPluginStart,
   CspClientPluginSetupDeps,
   CspClientPluginStartDeps,
 } from './types';
-import { PLUGIN_NAME, PLUGIN_ID } from '../common';
 
-const getFindingsComponent = () => 'This is coming from the CSP plugin!!!';
+const getFindingsComponent = () =>
+  'This chunk of text is coming from the cloud security posture plugin!';
 
 export class CspPlugin
   implements
@@ -31,20 +30,20 @@ export class CspPlugin
     plugins: CspClientPluginSetupDeps
   ): CspClientPluginSetup {
     // Register an application into the side navigation menu
-    core.application.register({
-      id: PLUGIN_ID,
-      title: PLUGIN_NAME,
-      euiIconType: 'logoSecurity',
-      category: DEFAULT_APP_CATEGORIES.security,
-      async mount(params: AppMountParameters) {
-        // Load application bundle
-        const { renderApp } = await import('./application');
-        // Get start services as specified in kibana.json
-        const [coreStart, depsStart] = await core.getStartServices();
-        // Render the application
-        return renderApp(coreStart, depsStart, params);
-      },
-    });
+    // core.application.register({
+    //   id: PLUGIN_ID,
+    //   title: PLUGIN_NAME,
+    //   euiIconType: 'logoSecurity',
+    //   category: DEFAULT_APP_CATEGORIES.security,
+    //   async mount(params: AppMountParameters) {
+    //     // Load application bundle
+    //     const { renderApp } = await import('./application');
+    //     // Get start services as specified in kibana.json
+    //     const [coreStart, depsStart] = await core.getStartServices();
+    //     // Render the application
+    //     return renderApp(coreStart, depsStart, params);
+    //   },
+    // });
 
     // Return methods that should be available to other plugins
     return {};

@@ -16,15 +16,23 @@ import { useKibana } from '../common/lib/kibana';
 const CloudSecurityPostureComponent = () => {
   const { cloudSecurityPosture } = useKibana().services;
   return (
-    <TrackApplicationView viewId="csp">
-      <SecuritySolutionPageWrapper noPadding>
-        <SpyRoute pageName={SecurityPageName.cloudSecurityPostureFindings} />
-        {cloudSecurityPosture.getFindingsComponent()}
-        {'This is in the security solution'}
-      </SecuritySolutionPageWrapper>
-    </TrackApplicationView>
+    <SecuritySolutionPageWrapper noPadding>
+      <SpyRoute pageName={SecurityPageName.cloudSecurityPostureFindings} />
+      {cloudSecurityPosture.getFindingsComponent()}
+      <br />
+      <br />
+      {'This chunk of text comes from the security solution'}
+    </SecuritySolutionPageWrapper>
   );
 };
+
+const Memoized = React.memo(CloudSecurityPostureComponent);
+
+const routes = () => (
+  <TrackApplicationView viewId="csp">
+    <Memoized />
+  </TrackApplicationView>
+);
 
 export class CloudSecurityPosture {
   public setup() {}
@@ -34,7 +42,7 @@ export class CloudSecurityPosture {
       routes: [
         {
           path: CLOUD_SECURITY_POSTURE_PATH,
-          render: CloudSecurityPostureComponent,
+          render: routes,
         },
       ],
     };
