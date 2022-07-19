@@ -23,3 +23,8 @@ export type CloudSecurityPosturePageId =
   | 'cloud_security_posture-findings'
   | 'cloud_security_posture-benchmarks'
   | 'cloud_security_posture-rules';
+
+export interface BreadcrumbInfo {
+  readonly name: string;
+  readonly path: string;
+}

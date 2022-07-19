@@ -10,7 +10,7 @@ import type { UnifiedSearchPublicPluginStart } from '@kbn/unified-search-plugin/
 import type { DataPublicPluginSetup, DataPublicPluginStart } from '@kbn/data-plugin/public';
 import type { ChartsPluginStart } from '@kbn/charts-plugin/public';
 import type { DiscoverStart } from '@kbn/discover-plugin/public';
-import type { CloudSecurityPosturePageId } from './common/navigation/types';
+import type { BreadcrumbInfo, CloudSecurityPosturePageId } from './common/navigation/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CspClientPluginSetup {}
@@ -40,4 +40,5 @@ export interface CspClientPluginStartDeps {
 export interface CspSecuritySolutionContext {
   getFiltersGlobalComponent: () => ComponentType<{ children: ReactNode }>;
   getSpyRouteComponent: () => ComponentType<{ pageName?: CloudSecurityPosturePageId }>;
+  getManageNavigationItem: () => BreadcrumbInfo;
 }

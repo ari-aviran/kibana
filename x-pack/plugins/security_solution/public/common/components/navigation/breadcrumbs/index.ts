@@ -5,32 +5,32 @@
  * 2.0.
  */
 
+import type { ChromeBreadcrumb } from '@kbn/core/public';
 import { last, omit } from 'lodash/fp';
 
 import { useDispatch } from 'react-redux';
-import type { ChromeBreadcrumb } from '@kbn/core/public';
-import type { StartServices } from '../../../../types';
-import { getTrailingBreadcrumbs as getHostDetailsBreadcrumbs } from '../../../../hosts/pages/details/utils';
-import { getTrailingBreadcrumbs as getIPDetailsBreadcrumbs } from '../../../../network/pages/details';
+import { TimelineId } from '../../../../../common/types/timeline';
+import { SecurityPageName } from '../../../../app/types';
 import { getTrailingBreadcrumbs as getDetectionRulesBreadcrumbs } from '../../../../detections/pages/detection_engine/rules/utils';
-import { getTrailingBreadcrumbs as getUsersBreadcrumbs } from '../../../../users/pages/details/utils';
+import { getTrailingBreadcrumbs as getHostDetailsBreadcrumbs } from '../../../../hosts/pages/details/utils';
 import { getTrailingBreadcrumbs as getKubernetesBreadcrumbs } from '../../../../kubernetes/pages/utils/breadcrumbs';
 import { getTrailingBreadcrumbs as getAdminBreadcrumbs } from '../../../../management/common/breadcrumbs';
-import { SecurityPageName } from '../../../../app/types';
+import { getTrailingBreadcrumbs as getIPDetailsBreadcrumbs } from '../../../../network/pages/details';
+import { timelineActions } from '../../../../timelines/store/timeline';
+import type { StartServices } from '../../../../types';
+import { getTrailingBreadcrumbs as getUsersBreadcrumbs } from '../../../../users/pages/details/utils';
 import type {
-  RouteSpyState,
+  AdministrationRouteSpyState,
   HostRouteSpyState,
   NetworkRouteSpyState,
-  AdministrationRouteSpyState,
+  RouteSpyState,
   UsersRouteSpyState,
 } from '../../../utils/route/types';
-import { timelineActions } from '../../../../timelines/store/timeline';
-import { TimelineId } from '../../../../../common/types/timeline';
-import type { GenericNavRecord, NavigateToUrl } from '../types';
-import { getLeadingBreadcrumbsForSecurityPage } from './get_breadcrumbs_for_page';
 import type { GetSecuritySolutionUrl } from '../../link_to';
 import { useGetSecuritySolutionUrl } from '../../link_to';
 import { useIsGroupedNavigationEnabled } from '../helpers';
+import type { GenericNavRecord, NavigateToUrl } from '../types';
+import { getLeadingBreadcrumbsForSecurityPage } from './get_breadcrumbs_for_page';
 
 export interface ObjectWithNavTabs {
   navTabs: GenericNavRecord;
@@ -80,7 +80,13 @@ export const getBreadcrumbsForRoute = (
 ): ChromeBreadcrumb[] | null => {
   const spyState: RouteSpyState = omit('navTabs', object);
 
-  if (!spyState || !object.navTabs || !spyState.pageName || isCaseRoutes(spyState)) {
+  if (
+    !spyState ||
+    !object.navTabs ||
+    !spyState.pageName ||
+    isCaseRoutes(spyState) ||
+    isCloudSecurityPostureManagedRoutes(spyState)
+  ) {
     return null;
   }
 
@@ -153,6 +159,9 @@ const isUsersRoutes = (spyState: RouteSpyState): spyState is UsersRouteSpyState 
   spyState.pageName === SecurityPageName.users;
 
 const isCaseRoutes = (spyState: RouteSpyState) => spyState.pageName === SecurityPageName.case;
+
+const isCloudSecurityPostureManagedRoutes = (spyState: RouteSpyState) =>
+  spyState.pageName === SecurityPageName.cloudSecurityPostureRules;
 
 const isKubernetesRoutes = (spyState: RouteSpyState) =>
   spyState.pageName === SecurityPageName.kubernetes;
