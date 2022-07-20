@@ -12,7 +12,7 @@ import { UseQueryResult } from 'react-query';
 import { i18n } from '@kbn/i18n';
 import { css } from '@emotion/react';
 import { useCspBreadcrumbs } from '../../common/navigation/use_csp_breadcrumbs';
-import { cloudPosturePages } from '../../common/navigation/constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from '../../common/navigation/constants';
 import { CloudPosturePage } from '../../components/cloud_posture_page';
 import { DASHBOARD_CONTAINER, MISSING_FINDINGS_NO_DATA_CONFIG } from './test_subjects';
 import { SummarySection } from './dashboard_sections/summary_section';
@@ -94,7 +94,7 @@ export const ComplianceDashboardNoPageTemplate = () => {
   );
 };
 
-const COMPLIANCE_DASHBOARD_BREADCRUMBS = [cloudPosturePages.dashboard];
+const COMPLIANCE_DASHBOARD_BREADCRUMBS = [CLOUD_SECURITY_POSTURE_PAGES.dashboard];
 
 export const ComplianceDashboard = () => {
   useCspBreadcrumbs(COMPLIANCE_DASHBOARD_BREADCRUMBS);

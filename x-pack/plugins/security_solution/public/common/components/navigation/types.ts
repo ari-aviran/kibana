@@ -6,11 +6,11 @@
  */
 
 import type { IconType } from '@elastic/eui';
-import type { UrlStateType } from '../url_state/constants';
 import { SecurityPageName } from '../../../app/types';
-import type { UrlState } from '../url_state/types';
-import type { SiemRouteType } from '../../utils/route/types';
 import type { LinkCategories } from '../../links';
+import type { SiemRouteType } from '../../utils/route/types';
+import type { UrlStateType } from '../url_state/constants';
+import type { UrlState } from '../url_state/types';
 
 export interface TabNavigationComponentProps {
   pageName: string;
@@ -31,6 +31,7 @@ export enum SecurityNavGroupKey {
   explore = 'explore',
   investigate = 'investigate',
   manage = 'manage',
+  findings = 'findings',
 }
 
 export type SecurityNavGroup = Record<SecurityNavGroupKey, NavGroupTab>;
@@ -64,6 +65,9 @@ export const securityNavKeys = [
   SecurityPageName.trustedApps,
   SecurityPageName.users,
   SecurityPageName.kubernetes,
+  SecurityPageName.cloudSecurityPostureFindings,
+  SecurityPageName.cloudSecurityPostureDashboard,
+  SecurityPageName.cloudSecurityPostureBenchmarks,
 ] as const;
 export type SecurityNavKey = typeof securityNavKeys[number];
 

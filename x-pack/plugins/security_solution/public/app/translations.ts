@@ -105,6 +105,9 @@ export const INVESTIGATE = i18n.translate('xpack.securitySolution.navigation.inv
 export const MANAGE = i18n.translate('xpack.securitySolution.navigation.manage', {
   defaultMessage: 'Manage',
 });
+export const FINDINGS = i18n.translate('xpack.securitySolution.navigation.findings', {
+  defaultMessage: 'Findings',
+});
 
 export const BLOCKLIST = i18n.translate('xpack.securitySolution.navigation.blocklist', {
   defaultMessage: 'Blocklist',

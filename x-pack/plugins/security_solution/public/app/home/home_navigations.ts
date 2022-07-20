@@ -5,6 +5,7 @@
  * 2.0.
  */
 
+import { CLOUD_SECURITY_POSTURE_PAGES } from '@kbn/cloud-security-posture-plugin/public';
 import * as i18n from '../translations';
 import type { SecurityNav, SecurityNavGroup } from '../../common/components/navigation/types';
 import { SecurityNavGroupKey } from '../../common/components/navigation/types';
@@ -30,6 +31,7 @@ import {
   APP_KUBERNETES_PATH,
   APP_LANDING_PATH,
   APP_RESPONSE_ACTIONS_PATH,
+  APP_PATH,
 } from '../../../common/constants';
 
 export const navTabs: SecurityNav = {
@@ -173,6 +175,27 @@ export const navTabs: SecurityNav = {
     disabled: false,
     urlKey: 'administration',
   },
+  [SecurityPageName.cloudSecurityPostureFindings]: {
+    id: SecurityPageName.cloudSecurityPostureFindings,
+    name: CLOUD_SECURITY_POSTURE_PAGES.findings.name,
+    href: `${APP_PATH}${CLOUD_SECURITY_POSTURE_PAGES.findings.path}`,
+    disabled: !!CLOUD_SECURITY_POSTURE_PAGES.findings.disabled,
+    urlKey: 'findings',
+  },
+  [SecurityPageName.cloudSecurityPostureDashboard]: {
+    id: SecurityPageName.cloudSecurityPostureDashboard,
+    name: CLOUD_SECURITY_POSTURE_PAGES.dashboard.name,
+    href: `${APP_PATH}${CLOUD_SECURITY_POSTURE_PAGES.dashboard.path}`,
+    disabled: !!CLOUD_SECURITY_POSTURE_PAGES.dashboard.disabled,
+    urlKey: 'csp_dashboard',
+  },
+  [SecurityPageName.cloudSecurityPostureBenchmarks]: {
+    id: SecurityPageName.cloudSecurityPostureBenchmarks,
+    name: CLOUD_SECURITY_POSTURE_PAGES.benchmarks.name,
+    href: `${APP_PATH}${CLOUD_SECURITY_POSTURE_PAGES.benchmarks.path}`,
+    disabled: !!CLOUD_SECURITY_POSTURE_PAGES.benchmarks.disabled,
+    urlKey: 'csp_benchmarks',
+  },
 };
 
 export const securityNavGroup: SecurityNavGroup = {
@@ -183,6 +206,10 @@ export const securityNavGroup: SecurityNavGroup = {
   [SecurityNavGroupKey.detect]: {
     id: SecurityNavGroupKey.detect,
     name: i18n.DETECT,
+  },
+  [SecurityNavGroupKey.findings]: {
+    id: SecurityNavGroupKey.findings,
+    name: i18n.FINDINGS,
   },
   [SecurityNavGroupKey.explore]: {
     id: SecurityNavGroupKey.explore,

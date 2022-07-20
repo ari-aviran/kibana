@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import { cloudPosturePages } from './constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from './constants';
 import type { CloudSecurityPosturePageId, CspPage } from './types';
 
 interface BaseLinkItem {
@@ -24,10 +24,10 @@ export const getSecuritySolutionLinks = <TLinkItem extends BaseLinkItem = BaseLi
   extensions?: SecuritySolutionLinkExtensions<TLinkItem>
 ): TLinkItem =>
   ({
-    id: cloudPosturePages[cspPage].id,
-    title: cloudPosturePages[cspPage].name,
-    path: cloudPosturePages[cspPage].path,
-    ...(extensions?.[cloudPosturePages[cspPage].id] ?? {}),
+    id: CLOUD_SECURITY_POSTURE_PAGES[cspPage].id,
+    title: CLOUD_SECURITY_POSTURE_PAGES[cspPage].name,
+    path: CLOUD_SECURITY_POSTURE_PAGES[cspPage].path,
+    ...(extensions?.[CLOUD_SECURITY_POSTURE_PAGES[cspPage].id] ?? {}),
   } as TLinkItem);
 
 /**

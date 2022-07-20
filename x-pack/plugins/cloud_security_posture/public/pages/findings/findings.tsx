@@ -12,7 +12,10 @@ import { CloudPosturePage } from '../../components/cloud_posture_page';
 import { useFindingsEsPit } from './es_pit/use_findings_es_pit';
 import { FindingsEsPitContext } from './es_pit/findings_es_pit_context';
 import { useLatestFindingsDataView } from '../../common/api/use_latest_findings_data_view';
-import { cloudPosturePages, findingsNavigation } from '../../common/navigation/constants';
+import {
+  CLOUD_SECURITY_POSTURE_PAGES,
+  findingsNavigation,
+} from '../../common/navigation/constants';
 import { CspPageTemplate } from '../../components/csp_page_template';
 import { FindingsByResourceContainer } from './latest_findings_by_resource/findings_by_resource_container';
 import { LatestFindingsContainer } from './latest_findings/latest_findings_container';
@@ -41,7 +44,7 @@ export const FindingsNoPageTemplate = () => {
         <Switch>
           <Route
             exact
-            path={cloudPosturePages.findings.path}
+            path={CLOUD_SECURITY_POSTURE_PAGES.findings.path}
             component={() => (
               <Redirect
                 to={{
@@ -69,7 +72,7 @@ export const FindingsNoPageTemplate = () => {
   );
 };
 
-const FINDINGS_BREADCRUMBS = [cloudPosturePages.findings];
+const FINDINGS_BREADCRUMBS = [CLOUD_SECURITY_POSTURE_PAGES.findings];
 
 export const Findings = () => {
   useCspBreadcrumbs(FINDINGS_BREADCRUMBS);

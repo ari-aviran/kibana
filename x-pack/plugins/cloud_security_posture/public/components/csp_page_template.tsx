@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import { i18n } from '@kbn/i18n';
 import { EuiErrorBoundary } from '@elastic/eui';
 import { KibanaPageTemplate, type KibanaPageTemplateProps } from '@kbn/shared-ux-components';
-import { cloudPosturePages } from '../common/navigation/constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from '../common/navigation/constants';
 import type { CspNavigationItem } from '../common/navigation/types';
 
 const activeItemStyle = { fontWeight: 700 };
@@ -35,9 +35,9 @@ const DEFAULT_PAGE_PROPS: KibanaPageTemplateProps = {
       defaultMessage: 'Cloud Security Posture',
     }),
     items: getSideNavItems({
-      dashboard: cloudPosturePages.dashboard,
-      findings: cloudPosturePages.findings,
-      benchmark: cloudPosturePages.benchmarks,
+      dashboard: CLOUD_SECURITY_POSTURE_PAGES.dashboard,
+      findings: CLOUD_SECURITY_POSTURE_PAGES.findings,
+      benchmark: CLOUD_SECURITY_POSTURE_PAGES.benchmarks,
     }),
   },
   restrictWidth: false,

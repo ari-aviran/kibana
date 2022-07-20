@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import { cloudPosturePages } from './constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from './constants';
 import { getSecuritySolutionLinks } from './security_solution_links';
 import { Chance } from 'chance';
 import type { CspPage } from './types';
@@ -18,22 +18,22 @@ describe('getSecuritySolutionLinks', () => {
 
     const links = getSecuritySolutionLinks(cspPage);
 
-    expect(links.id).toEqual(cloudPosturePages[cspPage].id);
-    expect(links.path).toEqual(cloudPosturePages[cspPage].path);
-    expect(links.title).toEqual(cloudPosturePages[cspPage].name);
+    expect(links.id).toEqual(CLOUD_SECURITY_POSTURE_PAGES[cspPage].id);
+    expect(links.path).toEqual(CLOUD_SECURITY_POSTURE_PAGES[cspPage].path);
+    expect(links.title).toEqual(CLOUD_SECURITY_POSTURE_PAGES[cspPage].name);
   });
 
   it('de-structures extensions correctly', () => {
     const cspPage = chance.pickone<CspPage>(['dashboard', 'findings', 'benchmarks', 'rules']);
     const overwrittenTitle = chance.word();
     const extensions = {
-      [cloudPosturePages[cspPage].id]: { title: overwrittenTitle },
+      [CLOUD_SECURITY_POSTURE_PAGES[cspPage].id]: { title: overwrittenTitle },
     };
 
     const links = getSecuritySolutionLinks(cspPage, extensions);
 
-    expect(links.id).toEqual(cloudPosturePages[cspPage].id);
-    expect(links.path).toEqual(cloudPosturePages[cspPage].path);
+    expect(links.id).toEqual(CLOUD_SECURITY_POSTURE_PAGES[cspPage].id);
+    expect(links.path).toEqual(CLOUD_SECURITY_POSTURE_PAGES[cspPage].path);
     expect(links.title).toEqual(overwrittenTitle);
   });
 });

@@ -5,6 +5,7 @@
  * 2.0.
  */
 
+import { CLOUD_SECURITY_POSTURE_PAGES } from '@kbn/cloud-security-posture-plugin/public';
 import { i18n } from '@kbn/i18n';
 
 import type { LicenseType } from '@kbn/licensing-plugin/common/types';
@@ -159,6 +160,13 @@ export const securitySolutionsDeepLinks: SecuritySolutionDeepLink[] = [
             defaultMessage: 'Detection & Response',
           }),
         ],
+      },
+      // TODO: Take this from the exported CSP method
+      {
+        id: SecurityPageName.cloudSecurityPostureDashboard,
+        title: CLOUD_SECURITY_POSTURE_PAGES.dashboard.name,
+        path: CLOUD_SECURITY_POSTURE_PAGES.dashboard.path,
+        features: [FEATURE.general],
       },
     ],
   },

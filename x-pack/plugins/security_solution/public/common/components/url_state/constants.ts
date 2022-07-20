@@ -42,4 +42,7 @@ export type UrlStateType =
   | 'rules'
   | 'timeline'
   | 'explore'
-  | 'dashboards';
+  | 'dashboards'
+  | 'findings'
+  | 'csp_benchmarks'
+  | 'csp_dashboard';

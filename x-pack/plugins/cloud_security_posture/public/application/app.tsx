@@ -10,7 +10,7 @@ import { I18nProvider } from '@kbn/i18n-react';
 import { KibanaContextProvider, RedirectAppLinks } from '@kbn/kibana-react-plugin/public';
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { cloudPosturePages } from '../common/navigation/constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from '../common/navigation/constants';
 import type { CspClientPluginStartDeps } from '../types';
 import { pageToComponentMapping } from './constants';
 import { CspRouter, getRoutesFromMapping } from './csp_router';
@@ -21,7 +21,7 @@ export interface CspAppDeps {
   params: AppMountParameters;
 }
 
-const cspPluginRoutes = getRoutesFromMapping(cloudPosturePages, pageToComponentMapping);
+const cspPluginRoutes = getRoutesFromMapping(CLOUD_SECURITY_POSTURE_PAGES, pageToComponentMapping);
 
 export const CspApp = ({ core, deps, params }: CspAppDeps) => (
   <RedirectAppLinks application={core.application} className={APP_WRAPPER_CLASS}>

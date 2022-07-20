@@ -12,7 +12,7 @@ import { FormattedMessage } from '@kbn/i18n-react';
 import { pagePathGetters } from '@kbn/fleet-plugin/public';
 import { BreadcrumbInfo } from '../../common/navigation/types';
 import { RulesContainer, type PageUrlParams } from './rules_container';
-import { cloudPosturePages } from '../../common/navigation/constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from '../../common/navigation/constants';
 import { useCspBreadcrumbs } from '../../common/navigation/use_csp_breadcrumbs';
 import { useCspIntegrationInfo } from './use_csp_integration';
 import { CspPageTemplate } from '../../components/csp_page_template';
@@ -29,12 +29,12 @@ const getRulesBreadcrumbs = (
     breadCrumbs.push(manageBreadcrumb);
   }
 
-  breadCrumbs.push(cloudPosturePages.benchmarks);
+  breadCrumbs.push(CLOUD_SECURITY_POSTURE_PAGES.benchmarks);
 
   if (name) {
-    breadCrumbs.push({ ...cloudPosturePages.rules, name });
+    breadCrumbs.push({ ...CLOUD_SECURITY_POSTURE_PAGES.rules, name });
   } else {
-    breadCrumbs.push(cloudPosturePages.rules);
+    breadCrumbs.push(CLOUD_SECURITY_POSTURE_PAGES.rules);
   }
 
   return breadCrumbs;
@@ -73,7 +73,7 @@ export const RulesNoPageTemplate = ({ match: { params } }: RouteComponentProps<P
         ]}
         pageTitle={
           <EuiFlexGroup direction="column" gutterSize="none">
-            <Link to={generatePath(cloudPosturePages.benchmarks.path)}>
+            <Link to={generatePath(CLOUD_SECURITY_POSTURE_PAGES.benchmarks.path)}>
               <EuiButtonEmpty iconType="arrowLeft" contentProps={{ style: { padding: 0 } }}>
                 <FormattedMessage
                   id="xpack.csp.rules.rulesPageHeader.benchmarkIntegrationsButtonLabel"

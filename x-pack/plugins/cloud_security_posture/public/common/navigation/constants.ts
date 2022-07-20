@@ -6,7 +6,6 @@
  */
 
 import { i18n } from '@kbn/i18n';
-import { INTERNAL_FEATURE_FLAGS } from '../../../common/constants';
 import type { CspPage, CspPageNavigationItem } from './types';
 
 const NAV_ITEMS_NAMES = {
@@ -27,7 +26,8 @@ const NAV_ITEMS_NAMES = {
 /** The base path for all cloud security posture pages. */
 export const CLOUD_SECURITY_POSTURE_BASE_PATH = '/cloud_security_posture' as const;
 
-export const cloudPosturePages: Record<CspPage, CspPageNavigationItem> = {
+/** Definitions of all navigable cloud security posture pages */
+export const CLOUD_SECURITY_POSTURE_PAGES: Record<CspPage, CspPageNavigationItem> = {
   dashboard: {
     name: NAV_ITEMS_NAMES.DASHBOARD,
     path: `${CLOUD_SECURITY_POSTURE_BASE_PATH}/dashboard`,
@@ -41,14 +41,12 @@ export const cloudPosturePages: Record<CspPage, CspPageNavigationItem> = {
   rules: {
     name: NAV_ITEMS_NAMES.RULES,
     path: `${CLOUD_SECURITY_POSTURE_BASE_PATH}/benchmarks/:packagePolicyId/:policyId/rules`,
-    disabled: !INTERNAL_FEATURE_FLAGS.showBenchmarks,
     id: 'cloud_security_posture-rules',
   },
   benchmarks: {
     name: NAV_ITEMS_NAMES.BENCHMARKS,
     path: `${CLOUD_SECURITY_POSTURE_BASE_PATH}/benchmarks`,
     exact: true,
-    disabled: !INTERNAL_FEATURE_FLAGS.showBenchmarks,
     id: 'cloud_security_posture-benchmarks',
   },
 };

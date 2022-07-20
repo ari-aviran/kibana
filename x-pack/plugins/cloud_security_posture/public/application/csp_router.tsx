@@ -9,7 +9,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Redirect, Route, RouteComponentProps, type RouteProps, Switch } from 'react-router-dom';
 import { CLOUD_SECURITY_POSTURE_BASE_PATH, type CspSecuritySolutionContext } from '..';
-import { cloudPosturePages } from '../common/navigation/constants';
+import { CLOUD_SECURITY_POSTURE_PAGES } from '../common/navigation/constants';
 import type { CloudSecurityPosturePageId, CspPageNavigationItem } from '../common/navigation/types';
 import { UnknownRoute } from '../components/unknown_route';
 import { pageToComponentMappingNoPageTemplate } from './constants';
@@ -61,7 +61,7 @@ export const addSpyRouteComponentToRoute = (
 };
 
 const securitySolutionRoutes = getRoutesFromMapping(
-  cloudPosturePages,
+  CLOUD_SECURITY_POSTURE_PAGES,
   pageToComponentMappingNoPageTemplate
 );
 
@@ -100,7 +100,7 @@ export const CspRouter = ({
   return <>{routerElement}</>;
 };
 
-const RedirectToDashboard = () => <Redirect to={cloudPosturePages.dashboard.path} />;
+const RedirectToDashboard = () => <Redirect to={CLOUD_SECURITY_POSTURE_PAGES.dashboard.path} />;
 
 // Using a default export for usage with `React.lazy`
 // eslint-disable-next-line import/no-default-export
